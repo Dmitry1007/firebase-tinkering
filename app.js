@@ -32,12 +32,12 @@ dbRefList.on("child_removed", snap => {
 // get elements
 const txtEmail    = document.getElementById("txtEmail")
 const txtPassword = document.getElementById("txtPassword")
-const btnLogin    = document.getElementById("btnLogin")
+const btnLogIn    = document.getElementById("btnLogIn")
 const btnSignUp   = document.getElementById("btnSignUp")
 const btnLogOut   = document.getElementById("btnLogOut")
 
 // add login event
-btnLogin.addEventListener("click", e => {
+btnLogIn.addEventListener("click", e => {
   const email = txtEmail.value
   const pass  = txtPassword.value
   const auth  = firebase.auth()
@@ -57,11 +57,22 @@ btnSignUp.addEventListener("click", e => {
   promise.catch(e => console.log(e.message))
 })
 
+// add logout event
+btnLogOut.addEventListener("click", e => {
+  firebase.auth().signOut()
+})
+
 // add a realtime authentication listener
 firebase.auth().onAuthStateChanged(firebaseUser => {
   if(firebaseUser) {
     console.log(firebaseUser)
+    btnLogOut.classList.remove("hide")
+    btnLogIn.classList.add("hide")
+    btnSignUp.classList.add("hide")
   } else {
     console.log("not logged in")
+    btnLogOut.classList.add("hide")
+    btnLogIn.classList.remove("hide")
+    btnSignUp.classList.remove("hide")
   }
 })
