@@ -8,12 +8,18 @@ var dbRefList   = dbRefObject.child("hobbies")
 
 // sync object changes
 dbRefObject.on("value", snap => {
-  preObject.innerText = JSON.stringify(snap.val(), null, 1);
+  preObject.innerText = JSON.stringify(snap.val(), null, 1)
 })
 
 // sync list changes
 dbRefList.on("child_added", snap => {
-  const li = document.createElement("li")
+  const li     = document.createElement("li")
   li.innerText = snap.val()
+  li.id        = snap.key
   ulList.appendChild(li)
+})
+
+dbRefList.on("child_changed", snap => {
+  const liChanged     = document.getElementById(snap.key)
+  liChanged.innerText = snap.val()
 })
