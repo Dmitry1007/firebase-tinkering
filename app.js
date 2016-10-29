@@ -28,3 +28,31 @@ dbRefList.on("child_removed", snap => {
   const liToRemove     = document.getElementById(snap.key)
   liToRemove.remove()
 })
+
+// get elements
+const txtEmail    = document.getElementById("txtEmail")
+const txtPassword = document.getElementById("txtPassword")
+const btnLogin    = document.getElementById("btnLogin")
+const btnSignUp   = document.getElementById("btnSignUp")
+const btnLogOut   = document.getElementById("btnLogOut")
+
+// add login event
+btnLogin.addEventListener("click", e => {
+  const email = txtEmail.value
+  const pass  = txtPassword.value
+  const auth  = firebase.auth()
+
+  const promise  = auth.signInWithEmailAndPassword(email, pass)
+  promise.catch(e => console.log(e.message))
+})
+
+// add signup event
+btnSignUp.addEventListener("click", e => {
+  // check for real email
+  const email    = txtEmail.value
+  const pass     = txtPassword.value
+  const auth     = firebase.auth()
+
+  const promise  = auth.createUserWithEmailAndPassword(email, pass)
+  promise.catch(e => console.log(e.message))
+})
