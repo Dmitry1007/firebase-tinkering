@@ -56,3 +56,12 @@ btnSignUp.addEventListener("click", e => {
   const promise  = auth.createUserWithEmailAndPassword(email, pass)
   promise.catch(e => console.log(e.message))
 })
+
+// add a realtime authentication listener
+firebase.auth().onAuthStateChanged(firebaseUser => {
+  if(firebaseUser) {
+    console.log(firebaseUser)
+  } else {
+    console.log("not logged in")
+  }
+})
