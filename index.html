@@ -1,12 +1,32 @@
 <!doctype html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <meta name="description" content="$1">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Firbase App</title>
+      <meta charset="utf-8">
+      <meta name="description" content="$1">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Firbase App</title>
+
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.css">
     </head>
     <body>
+
+    <div class="container">
+      <input id="txtEmail" type="email" placeholder="Email">
+
+      <input id="txtPassword" type="password" placeholder="Password">
+
+      <button id="btnLogin" class="btn btn-action">
+        Log In
+      </button>
+
+      <button id="btnSignUp" class="btn btn-secondary">
+        Sign Up
+      </button>
+
+      <button id="btnLogout" class="btn btn-action hide">
+        Log Out
+      </button>
+    </div>
 
     <pre id="object">
 
