@@ -103,6 +103,9 @@ fileButton.addEventListener("change", function(e) {
     },
     function complete() {
       console.log("Success!!")
+      storageRef.getDownloadURL().then(function(url) {
+        console.log(url);
+      });
     }
   )
 })
