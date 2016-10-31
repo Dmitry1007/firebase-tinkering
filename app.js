@@ -65,7 +65,7 @@ btnLogOut.addEventListener("click", e => {
 // add a realtime authentication listener
 firebase.auth().onAuthStateChanged(firebaseUser => {
   if(firebaseUser) {
-    console.log(firebaseUser)
+    // console.log(firebaseUser)
     btnLogOut.classList.remove("hide")
     btnLogIn.classList.add("hide")
     btnSignUp.classList.add("hide")
@@ -99,10 +99,10 @@ fileButton.addEventListener("change", function(e) {
       uploader.value = percentage
     },
     function error(err) {
-
+      console.log("OOOOPs!!", err)
     },
     function complete() {
-
+      console.log("Success!!")
     }
   )
 })
