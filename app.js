@@ -78,8 +78,9 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 })
 
 // get elements
-var uploader   = document.getElementById("uploader")
-var fileButton = document.getElementById("fileButton")
+var uploader      = document.getElementById("uploader")
+var fileButton    = document.getElementById("fileButton")
+var uploadedImage = document.getElementById("uploadedImage")
 
 // listen for file selection
 fileButton.addEventListener("change", function(e) {
@@ -105,6 +106,7 @@ fileButton.addEventListener("change", function(e) {
       console.log("Success!!")
       storageRef.getDownloadURL().then(function(url) {
         console.log(url);
+        uploadedImage.src = url
       });
     }
   )
